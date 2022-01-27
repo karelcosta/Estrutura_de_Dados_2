@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct nodo
+{
+  int valor;
+  struct nodo *esq;
+  struct nodo *dir;
+} typedef Nodo;
+
+Nodo *raiz = NULL; 
+
+void separador(){
+  printf("\n------------------------\n");
+}
+//Adicionar jogaodr
+Nodo *criar(int valor){
+  Nodo *n = malloc(sizeof(Nodo));
+  n->valor = valor;
+  n->esq = NULL;
+  n->dir = NULL;
+  return n;
+}
+
+void add(Nodo *n, int valor){
+  if (valor < n->valor){
+    if(n->esq == NULL){
+      n->esq = criar(valor);
+    } else {
+      add(n->esq, valor);
+    }
+  } else {
+    if (n->dir == NULL){
+      n->dir = criar(valor);
+    } else {
+      add(n->dir, valor);
+    }
+  }
+}
+//imprimeir
+void imprimir(Nodo *n){
+  if(n==NULL)
+		return;
+	imprimir(n->esq);
+	printf("\n%d",n->valor);
+	imprimir(n->dir);
+}
+
+//calcular maior
+void achar_maior(Nodo *n){
+  if(n != NULL){
+    if(n->dir == NULL){
+      printf("maior valor: %d", n->valor);
+    } else {
+      achar_maior(n->dir);
+    }
+  }
+}
+
+//calcular numero de nós
+void NumeroDeNos(Nodo *n){
+  int ndn;
+  if (n != NULL){
+    NumeroDeNos(n->esq);
+    NumeroDeNos(n->dir);
+    ndn++;
+  }
+}
+int main() {
+  int fechar=0, op, valor;
+  char aux_case1= 's';
+
+  do {
+    separador();
+    printf("1_Adicionar valor\n2_listar valores\n3_calcular nós da arvora\n4_achar maior numero");
+    printf("\n5_fechar");
+    separador();
+    printf("opção:\t");
+    scanf("%d", &op);
+    switch (op){
+      case 1:
+        printf("\nInforme o valor\t");
+        scanf("%d", &valor);
+
+        if (raiz == NULL){
+          raiz = criar(valor);
+        } else {
+          add(raiz, valor);
+        }
+      break;
+      case 2:
+      imprimir(raiz);
+      break;
+      case 3:
+      separador();
+      NumeroDeNos(raiz);
+      break;
+      case 4:
+      achar_maior(raiz);
+      break;
+      case 5:
+      fechar = 1;
+      printf("fechando programa.");
+      break;
+    }
+  }while (fechar !=1);
+  return 0;
+}
