@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct nodo{
+  int numero;
+  struct nodo *esq;
+  struct nodo *dir;
+}typedef Nodo;
+
+Nodo *raiz;
+
+//criar e adicionar jogador
+Nodo *criar(int numero){
+  Nodo *n = malloc(sizeof(Nodo));
+  n->numero = numero;
+  n->esq = NULL;
+  n->dir = NULL;
+  return n;
+}
+
+void add(Nodo *n, int numero){
+  if (numero < n->numero){
+    if(n->esq == NULL){
+      n->esq = criar(numero);
+    } else {
+      add(n->esq, numero);
+    }
+  } else {
+    if (n->dir == NULL){
+      n->dir = criar(numero);
+    } else {
+      add(n->dir, numero);
+    }
+  }
+}
+
+void separador(){
+  printf("\n------------------------\n");
+}
+
+//substituir jogador
+
+//imprimir em ordem
+void listar_emOrdem(Nodo *n){
+  if(n != NULL){
+    listar_emOrdem(n->esq);
+    printf("jogador: %d\n", n->numero);
+    listar_emOrdem(n->dir);
+  }
+}
+
+//imprimir pos ordem
+
+void listar_posOrdem(Nodo *n){
+  if(n != NULL){
+    listar_posOrdem(n->esq);
+    listar_posOrdem(n->dir);
+    printf("jogador: %d\n", n->numero);
+  }
+}
+
+int main(void) {
+  int fechar = 0, op, numero;
+
+  do {
+    separador();
+    printf("1_adicionar jogador\n2_substituir jogador\n3_listar em-ordem\n4_listar pos-ordem\n5_fechar");
+    separador();
+    printf("opção:");
+    scanf("%d", &op);
+    switch (op){
+      case 1:
+      printf("informe o numero do jogador:\t");
+      scanf("%d", &numero);
+      if (raiz == NULL){
+          raiz = criar(numero);
+      } else {
+          add(raiz, numero);
+      }
+      break;
+      case 2:
+      break;
+      case 3:
+      separador();
+      listar_emOrdem(raiz);
+      break;
+      case 4:
+      separador();
+      listar_posOrdem(raiz);
+      break;
+      case 5:
+      fechar = 1;
+      break;
+    }
+  }while (fechar !=1);
+
+  return 0;
+}
