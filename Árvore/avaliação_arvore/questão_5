@@ -1,0 +1,129 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct nodo{
+  int numero;
+  char nome[50];
+  struct nodo *esq;
+  struct nodo *dir;
+}typedef Nodo;
+
+Nodo *raiz;
+
+//criar e adicionar jogador
+Nodo *criar(int numero, char nome[50]){
+  Nodo *n = malloc(sizeof(Nodo));
+  n->nome == nome;
+  n->numero = numero;
+  n->esq = NULL;
+  n->dir = NULL;
+  return n;
+}
+
+void add(Nodo *n, int numero, char nome[50]){
+  if (numero < n->numero){
+    if(n->esq == NULL){
+      n->esq = criar(numero, nome);
+    } else {
+      add(n->esq, numero, nome);
+    }
+  } else {
+    if (n->dir == NULL){
+      n->dir = criar(numero, nome);
+    } else {
+      add(n->dir, numero, nome);
+    }
+  }
+}
+
+void separador(){
+  printf("\n------------------------\n");
+}
+
+//substituir jogador
+
+void substituir(Nodo *n, Nodo *novo){
+  if(n != NULL){
+    substituir(n->esq, novo);
+    substituir(n->dir, novo);
+    if(n->numero == novo->numero){
+      n = novo;
+    }
+  }
+}
+//imprimir em ordem
+void listar_emOrdem(Nodo *n){
+  if(n != NULL){
+    listar_emOrdem(n->esq);
+    printf("%s n:%d\n",n->nome, n->numero);
+    listar_emOrdem(n->dir);
+  }
+}
+
+//imprimir pos ordem
+
+void listar_posOrdem(Nodo *n){
+  if(n != NULL){
+    listar_posOrdem(n->esq);
+    listar_posOrdem(n->dir);
+    printf("%s n:%d\n",n->nome, n->numero);
+  }
+}
+
+int main(void) {
+  int fechar = 0, op, numero, max;
+  char nome[50];
+  Nodo *novo;
+
+  do {
+    separador();
+    printf("1_adicionar jogador\n2_substituir jogador\n3_listar em-ordem\n4_listar pos-ordem\n5_fechar");
+    separador();
+    printf("opção:");
+    scanf("%d", &op);
+    switch (op){
+      case 1:
+      if (max <= 11){
+        printf("informe o nome do jogador:\t");
+        scanf("%s", nome);
+        printf("informe o numero do jogador:\t");
+        scanf("%d", &numero);
+        if (raiz == NULL){
+          raiz = criar(numero, nome);
+        } else {
+          add(raiz, numero, nome);
+        } 
+        max++;
+      } else {
+        printf("limite de jogadores alcançado");
+      }
+      break;
+      case 2:
+      separador();
+      printf("informe o numero do jogador que deseja substituir\t");
+      scanf("%d", &numero);
+      separador();
+      printf("informe o nome do novo jogador:\t");
+      scanf("%s", novo->nome);
+      printf("agora o numero:\t");
+      scanf("%d", &novo->numero);
+      substituir(raiz, novo);
+
+      break;
+      case 3:
+      separador();
+      listar_emOrdem(raiz);
+      break;
+      case 4:
+      separador();
+      listar_posOrdem(raiz);
+      break;
+      case 5:
+      fechar = 1;
+      break;
+    }
+  }while (fechar !=1);
+
+  return 0;
+}
