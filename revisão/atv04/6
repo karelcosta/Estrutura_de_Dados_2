@@ -1,0 +1,13 @@
+#include <stdio.h>
+void soma(int a,int b){
+  int soma;
+  a = a * a;
+  b = b * b;
+  soma = a + b;
+  printf("soma = %d", soma);
+}
+int main(void) {
+  int a, b;
+  soma(1, 2);
+  return 0;
+}
