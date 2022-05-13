@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    int i = 5;
+    int *ponteiroint = &i;
+    
+    float f = 0.9;
+    float *ponteirofloat = &f;
+    
+    char c ='x';
+    char  *ponteirochar = &c;
+    
+   *ponteiroint = 7;
+   *ponteirofloat = 1.4;
+   *ponteirochar = 'y';
+
+    printf("Inteiro %i ", *ponteiroint);
+    printf("\nReal %.1f",  *ponteirofloat);
+    printf("\nChar %c", *ponteirochar);
+
+}
