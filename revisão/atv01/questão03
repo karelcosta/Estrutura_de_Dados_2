@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main(void) {
+  int a, b;
+  printf("informe o primeiro valor:\t");
+  scanf("%d", &a);
+  printf("informe o segundo valor:\t");
+  scanf("%d", &b);
+
+  if(a==b){
+    printf("valores iguais");
+  } else if(a!=b){
+    printf("%d, %d", a, b);
+  }
+  
+  return 0;
+}
