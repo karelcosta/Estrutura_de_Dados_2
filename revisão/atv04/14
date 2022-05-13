@@ -1,0 +1,14 @@
+#include <stdio.h>
+void preencher(int *pt){
+  for (int i = 0; i<3; i++){
+    pt[i] = i+1;
+  }
+  for (int i = 0; i<3; i++){
+    printf("\n%d", pt[i]);
+  }
+}
+int main(void) {
+  int array[3];
+  preencher(array);
+  return 0;
+}
