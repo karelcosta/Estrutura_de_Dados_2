@@ -1,0 +1,35 @@
+#include <stdio.h>
+int maior, medio, menor;
+void ordenar(int a, int b, int c){
+  if (a > maior){
+    maior = a;
+  }
+  if (b > maior){
+    medio = maior;
+    maior = b;
+  } else if (b < maior){
+    medio =b;
+  }
+  if (c > maior){
+    menor = medio;
+    medio = maior;
+    maior = c;
+  } else if (c < maior && c >medio){
+    menor = medio;
+    medio =c;
+  } else if(c < medio){
+    menor = c;
+  }
+}
+int main(void) {
+  int a, b, c;
+  printf("informe o valor de a: ");
+  scanf("%d", &a);
+  printf("valor de b: ");
+  scanf("%d", &b);
+  printf("valor de c: ");
+  scanf("%d", &c); 
+  ordenar(a, b, c);
+  printf("\nvalores ordenados\n%d %d %d", menor, medio, maior);
+  return 0;
+}
