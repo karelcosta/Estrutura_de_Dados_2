@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main (){
+ 
+    int x = 6;
+    int y = 8;
+
+    if (&x > &y)
+      {
+	    printf ("A variavel x tem o maior endereco de memoria\n");
+      } else {
+    printf ("A variavel y tem o maior endereco de memoria\n");
+        }
+  
+}
