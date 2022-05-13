@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(void) {
+  int a, b;
+  printf("iforme os valores de A e B: \nA?\t");
+  scanf("%d", &a);
+  printf("B?\t");
+  scanf("%d", &b);
+
+  printf("\nsoma dos numeros = %d", a+b);
+  printf("\nproduto do primeiro número pelo quadrado do segundo = %d", a*b*b);
+  printf("\nquadrado do primeiro número = %d", a*a);
+  
+  return 0;
+}
