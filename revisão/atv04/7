@@ -1,0 +1,14 @@
+#include <stdio.h>
+int a, b;
+void soma(){
+  a = a + b;
+}
+int main(void) {
+  a = 1;
+  b = 2;
+  printf("a = %d\n", a);
+  printf("b = %d\n", b);
+  soma();
+  printf("soma = %d", a);
+  return 0;
+}
