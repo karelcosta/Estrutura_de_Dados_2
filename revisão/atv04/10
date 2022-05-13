@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main(void) {
+  int array[5];
+  int *pt[5];
+  for (int i = 0; i<5; i++){
+    printf("\ninforme o valor de array[%d]: ", i);
+    scanf("%d", &array[i]);
+  }
+  for (int f = 0; f<5; f++){
+    array[f] = array[f] * 2;
+    pt[f] = array[f];
+    printf("\narray[%d] = %d", f, pt[f]);
+  }
+  return 0;
+}
